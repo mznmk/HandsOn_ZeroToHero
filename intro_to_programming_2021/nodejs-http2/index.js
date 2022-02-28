@@ -6,7 +6,6 @@ const pug = require('pug');
 // createServer
 // https://nodejs.org/api/http.html#httpcreateserveroptions-requestlistener
 const server = http.createServer();
-const port = '8000';
 server.on('request', (req, res) => {
   const now = new Date;
   console.info(
@@ -103,6 +102,7 @@ server.on('clientError', e => {
   console.error(`[${new Date}] Client Error: `, e);
 });
 
+const port = process.env.PORT || 8000;
 server.listen(port, () => {
   console.info(`[${new Date}] Listening on ${port}`);
 });

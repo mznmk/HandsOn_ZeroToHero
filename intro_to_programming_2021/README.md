@@ -31,6 +31,10 @@ Python3 で簡易サーバーを立て、「あなたのいいところ診断」
 `python3 -m http.server 8000`  
 
 
-## nodejs-http (3章 12-17節)
+## nodejs-http1 nodejs-http2 (3章 12-17節)
+
+簡単なアンケートフォームを作成した。  
+nodejs-http1: GET POST でデータをやり取りする、クライアントサーバー型の基本部分を作成した。  
+nodejs-http2: テンプレートエンジン pug を利用して nodejs-http1 を書き換え、認証も導入し、Herokuにアップロードした。  
 
 
