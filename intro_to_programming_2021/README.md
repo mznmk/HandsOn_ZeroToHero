@@ -25,7 +25,7 @@ CSS を JavaScript で操作した。
 診断結果はツイートすることもできる。  
 
 
-## linux-study/httpd (2章 10節)
+## httpd (2章 10節)
 
 Python3 で簡易サーバーを立て、「あなたのいいところ診断」をサーバー上で動作させた。  
 `python3 -m http.server 8000`  
