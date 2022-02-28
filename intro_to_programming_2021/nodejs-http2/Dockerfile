@@ -20,3 +20,11 @@ RUN yarn global add pug-cli
 
 # [ set user environment ]
 WORKDIR /app
+
+# ========== for uploading into heroku ==========
+
+# [ set user environment ]
+COPY . /app
+
+# [ entrypoint ]
+CMD ["sh", "run.sh"]
