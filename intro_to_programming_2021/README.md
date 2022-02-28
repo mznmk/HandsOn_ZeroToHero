@@ -31,10 +31,39 @@ Python3 で簡易サーバーを立て、「あなたのいいところ診断」
 `python3 -m http.server 8000`  
 
 
-## nodejs-http1 nodejs-http2 (3章 12-17節)
+## nodejs-http1 nodejs-http2 (3章 12-18節)
 
 簡単なアンケートフォームを作成した。  
 nodejs-http1: GET POST でデータをやり取りする、クライアントサーバー型の基本部分を作成した。  
-nodejs-http2: テンプレートエンジン pug を利用して nodejs-http1 を書き換え、認証も導入し、Herokuにアップロードした。  
+nodejs-http2: テンプレートエンジン pug を利用して nodejs-http1 を書き換え、認証も導入した。Herokuへのアップロードも学習した。  
 
+- Heroku アカウントへログイン  
+  ```sh
+  heroku login
+  ```
+- アプリのディレクトリに移動して Heroku アプリを作成する  
+  ```sh
+  heroku create
+  ```
+- GitHubリポジトリ と Heroku の連携  
+  ```sh
+  heroku git:remote -a nodejs-http2   # <- AppName
+  ```
+
+- Heroku 上の Container Registry へログイン  
+  ```sh
+  heroku container:login
+  ```
+- イメージをビルドし、Container Registry にプッシュする  
+  ```sh
+  heroku container:push web
+  ```
+- イメージをアプリにリリースする  
+  ```sh
+  heroku container:release web
+  ```
+- アプリをブラウザで開く  
+  ```sh
+  heroku open
+  ```
 

@@ -3,16 +3,28 @@
 const http = require('http');
 const pug = require('pug');
 
-// createServer
-// https://nodejs.org/api/http.html#httpcreateserveroptions-requestlistener
+const auth = require('http-auth');
+const basic = auth.basic(
+  { realm: 'Enquetes Area.' },
+  (username, password, callback) => {
+    callback(username === 'username' && password === 'password');
+  }
+);
+
 const server = http.createServer();
-server.on('request', (req, res) => {
-  const now = new Date;
+server.on('request', basic.check((req, res) => {
   console.info(
-    `[${now}] Requested by ${req.socket.remoteAddress}`
+    `Requested by ${req.socket.remoteAddress}`
   );
+  if (req.url === '/logout') {
+    res.writeHead(401, {
+      'Content-Type': 'text/plain; charset=utf-8'
+    });
+    res.end('ログアウトしました！');
+    return;
+  }
   res.writeHead(200, {
-    'Content-Type': 'text/html; charset=utf8'
+    'Content-Type': 'text/html; charset=utf-8'
   });
   switch (req.method) {
     // method: GET
@@ -71,7 +83,7 @@ server.on('request', (req, res) => {
         })
         .on('end', () => {
           const decoded = decodeURIComponent(rawData);
-          console.info(`[${now}] Posted: ${decoded}`);
+          console.info(`Posted: ${decoded}`);
           const qs = require('querystring');
           const answer = qs.parse(decoded)
           res.write(
@@ -94,15 +106,15 @@ server.on('request', (req, res) => {
     default:
       break;
   }
-});
+}));
 server.on('error', e => {
-  console.error(`[${new Date}] Server Error: `, e);
+  console.error(`Server Error: `, e);
 });
 server.on('clientError', e => {
-  console.error(`[${new Date}] Client Error: `, e);
+  console.error(`Client Error: `, e);
 });
 
 const port = process.env.PORT || 8000;
 server.listen(port, () => {
-  console.info(`[${new Date}] Listening on ${port}`);
+  console.info(`Listening on ${port}`);
 });

@@ -17,13 +17,10 @@ RUN apt-get install -y tmux vim less
 # [ install node.js application ]
 RUN yarn add pug@2.0.4
 RUN yarn global add pug-cli
+RUN yarn add http-auth@4.1.9
 
 # [ set user environment ]
 WORKDIR /app
-
-# ========== for uploading into heroku ==========
-
-# [ set user environment ]
 COPY . /app
 
 # [ entrypoint ]
