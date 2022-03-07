@@ -1,6 +1,6 @@
-# HandsOn Web Programming
+# HandsOn Web
 
-HandsOn形式での WebProgramming の学習記録  
+いろんなハンズオンに取り組みながら、Web Application Programming を学習しようという試みです。  
 
 
 ## Intro To Programming 2021
