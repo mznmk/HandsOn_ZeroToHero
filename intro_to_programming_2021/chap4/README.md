@@ -19,4 +19,16 @@ helmet というモジュールを導入し、 Express の機能を拡張した�
 GitHub を使った外部認証 によるログインシステムを実装した。  
 
 
+## damage-calc (4章 4節)
+
+テスティングフレームワーク Jest を導入し、テストを機能を実装した。  
+
+
+## damage-calc (4章 5節)
+
+CIツール GitHub Actions を導入し、自動テストを学習した。  
+※ repositoryにpushするたびにテストが走られると困る（学習用repository）ので、  
+   .github → github_actions にdirectory名を変更して走らないようにしている。  
+   本来はrepositoryのrootに .github/ で配置する。  
+
 
