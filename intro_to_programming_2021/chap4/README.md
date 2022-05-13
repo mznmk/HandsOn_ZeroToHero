@@ -37,3 +37,8 @@ CIツール GitHub Actions を導入し、自動テストを学習した。
 webpack を導入し、モジュールバンドラーを学習した。  
 
 
+## dom-manipulation (4章 7節)
+
+jQuery を導入し、DOM 操作のフレームワーク を学習した。  
+
+
