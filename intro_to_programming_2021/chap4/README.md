@@ -32,3 +32,8 @@ CIツール GitHub Actions を導入し、自動テストを学習した。
    本来はrepositoryのrootに .github/ で配置する。  
 
 
+## webpack-study (4章 6節)
+
+webpack を導入し、モジュールバンドラーを学習した。  
+
+
