@@ -2,7 +2,7 @@
 
 Ｎ予備校のカリキュラム 【2021年度】プログラミング入門 のハンズオン  
 https://www.nnn.ed.nico/my_course?courseId=999  
-
+https://www.nnn.ed.nico/courses/999/chapters/13380  
 
 ## js-grammer (1章 6-12節)
 
