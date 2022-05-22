@@ -4,6 +4,13 @@
 const pug = require('pug');
 const Coolies = require('cookies');
 const Post = require('./post');
+
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 const util = require('./handler-util');
 const Cookies = require('cookies');
 
@@ -23,6 +30,7 @@ function handle(req, res) {
       Post.findAll({order:[['id', 'DESC']]}).then((posts) => {
         posts.forEach((post) => {
           post.content = post.content.replace(/\n/g, '<br>');
+          post.formattedCreatedAt = dayjs(post.createdAt).tz('Asia/Tokyo').format('YYYY年MM月DD日 HH時mm分ss秒');
         });
         res.end(pug.renderFile('./views/posts.pug', { posts, user: req.user }));
       });
