@@ -2,10 +2,8 @@
 
 // [ import library ]
 const pug = require('pug');
-const util = require('./handler-util')
-
-// [ variable ]
-const contents = [];
+const Post = require('./post');
+const util = require('./handler-util');
 
 // [ posts handler ]
 function handle(req, res) {
@@ -14,7 +12,9 @@ function handle(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8'
       });
-      res.end(pug.renderFile('./views/posts.pug', { contents }));
+      Post.findAll({order:[['id', 'DESC']]}).then((posts) => {
+        res.end(pug.renderFile('./views/posts.pug', { posts }));
+      });
       break;
     case 'POST':
       let body = [];
@@ -26,9 +26,13 @@ function handle(req, res) {
         const params = new URLSearchParams(body);
         const content = params.get('content');
         console.info('投稿されました: ' + content);
-        contents.push(content);
-        console.info('投稿された全内容: ', contents);
-        handleRedirectPosts(req, res);
+        Post.create({
+          content,
+          trackingCookie: null,
+          postedBy: req.user
+        }).then(() => {
+          handleRedirectPosts(req, res);
+        });
       });
       break;
     default:
