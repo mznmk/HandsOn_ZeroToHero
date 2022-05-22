@@ -2,6 +2,7 @@
 
 // [ import library ]
 const pug = require('pug');
+const util = require('./handler-util')
 
 // [ variable ]
 const contents = [];
@@ -13,7 +14,7 @@ function handle(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/html; charset=utf-8'
       });
-      res.end(pug.renderFile('./views/posts.pug'));
+      res.end(pug.renderFile('./views/posts.pug', { contents }));
       break;
     case 'POST':
       let body = [];
@@ -31,6 +32,7 @@ function handle(req, res) {
       });
       break;
     default:
+      util.handlerBadRequest(req, res)
       break;
   }
 }
