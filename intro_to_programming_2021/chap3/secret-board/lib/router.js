@@ -6,6 +6,9 @@ const util = require('./handler-util');
 
 // [ router ]
 function route(req, res) {
+  if (process.env.DATABASE_URL && req.headers['x-forwarded-proto'] === 'http') {
+    util.handleNotFound(req, res);
+  }
   switch (req.url) {
     case '/posts':
       postsHandler.handle(req, res);
