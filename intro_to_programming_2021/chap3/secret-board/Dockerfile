@@ -17,3 +17,6 @@ ENV     TZ Asia/Tokyo
 # [ set user environment ]
 WORKDIR /app
 USER    node
+
+COPY    . /app
+CMD     [ "sh", "run.sh" ]

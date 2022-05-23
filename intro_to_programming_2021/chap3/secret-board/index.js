@@ -6,7 +6,7 @@ const auth = require('http-auth')
 const router = require('./lib/router');
 
 // [ const variable ]
-const port = 8000;
+const port = process.env.PORT || 8000;
 const basic = auth.basic({
   realm: 'Enter username and password.',
   file: './users.htpasswd'

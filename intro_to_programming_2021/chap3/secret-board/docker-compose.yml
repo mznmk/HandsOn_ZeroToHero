@@ -8,7 +8,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ../:/app
+      - .:/app
     depends_on:
       - db
   # [ service "db" ]
@@ -20,12 +20,12 @@ services:
       POSTGRES_DB: secret_board
       TZ: "Asia/Tokyo"
     volumes:
-      - ../../secret-board-db:/var/lib/postgresql/data
+      - ../secret-board-db:/var/lib/postgresql/data
   # # [ service "password-challenger" ]
   # password-challenger:
   #   build: .
   #   tty: true
   #   volumes:
-  #     - ../../password-challenger:/app
+  #     - ../password-challenger:/app
   #   depends_on:
   #     - app
