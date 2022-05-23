@@ -27,10 +27,8 @@ https://www.nnn.ed.nico/my_course?courseId=999
 ✅ 受講完了 0回  
 Chap1 済  
 Chap2 済
-Chap3  
-Chap4  
+Chap3 済 
 ✓ 受講途中…  
-Chap3 01〜33 済  
 Chap4 01〜14 済  
 
 

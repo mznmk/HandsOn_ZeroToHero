@@ -149,6 +149,16 @@ PostgreSQL コンテナのデータベースを secret-board-db にマウント�
 【27節】  
 デザインの改善 を行った。  
 
+
+## os-command-injection (3章 28節)
+
+OS コマンド・インジェクション を体験した。  
+
+
+## secret-board (3章 21-27節 29-34節)
+
+秘密の匿名掲示板 を作成した。  
+
 【29節】  
 XSS脆弱性の対策 を行った。  
 
@@ -168,7 +178,5 @@ CSRF脆弱性の対策 を行った。
 csrf-study に外部サイトを作成し、CSR脆弱性を攻撃してみた。  
 
 【34節】
-
-
-## os-command-injection (3章 28節)
+Heroku への安全な公開 を学習した。  
 
