@@ -21,3 +21,11 @@ services:
       TZ: "Asia/Tokyo"
     volumes:
       - ../../secret-board-db:/var/lib/postgresql/data
+  # # [ service "password-challenger" ]
+  # password-challenger:
+  #   build: .
+  #   tty: true
+  #   volumes:
+  #     - ../../password-challenger:/app
+  #   depends_on:
+  #     - app

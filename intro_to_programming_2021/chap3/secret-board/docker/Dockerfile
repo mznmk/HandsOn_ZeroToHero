@@ -6,6 +6,7 @@ RUN     apt-get update; \
         apt-get upgrade; \
         apt-get install -y tmux vim less; \
         apt-get install -y locales
+RUN     yarn global add htpasswd@2.4.4
 
 # [ set system environment ]
 RUN     locale-gen ja_JP.UTF-8
