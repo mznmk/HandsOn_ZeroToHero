@@ -17,6 +17,7 @@ const Cookies = require('cookies');
 
 // [ variable ]
 const trackingIdKey = 'tracking_id';
+const oneTimeTokenMap = new Map();  // key: userName, value: token
 
 // [ posts handler ]
 function handle(req, res) {
@@ -35,7 +36,12 @@ function handle(req, res) {
         posts.forEach((post) => {
           post.formattedCreatedAt = dayjs(post.createdAt).tz('Asia/Tokyo').format('YYYY年MM月DD日 HH時mm分ss秒');
         });
-        res.end(pug.renderFile('./views/posts.pug', { posts, user: req.user }));
+        const oneTimeToken = crypto.randomBytes(8).toString('hex');
+        oneTimeTokenMap.set(req.user, oneTimeToken);
+        res.end(pug.renderFile(
+          './views/posts.pug',
+          { posts, user: req.user, oneTimeToken })
+        );
       });
       console.info(
         `閲覧されました: user: ${req.user}, ` +
@@ -54,19 +60,29 @@ function handle(req, res) {
         body = Buffer.concat(body).toString();
         const params = new URLSearchParams(body);
         const content = params.get('content');
-        console.info('投稿されました: ' + content);
-        Post.create({
-          content: content,
-          trackingCookie: trackingId,
-          postedBy: req.user
-        }).then(() => {
-          handleRedirectPosts(req, res);
-        });
+        const requestedOneTimeToken = params.get('oneTimeToken');
+        if (!(content && requestedOneTimeToken)) {
+          util.handleBadRequest(req, res);
+        } else {
+          if (oneTimeTokenMap.get(req.user) === requestedOneTimeToken) {
+            console.info('投稿されました: ' + content);
+            Post.create({
+              content: content,
+              trackingCookie: trackingId,
+              postedBy: req.user
+            }).then(() => {
+              oneTimeTokenMap.delete(req.user);
+              handleRedirectPosts(req, res);
+            });
+          } else {
+            util.handleBadRequest(req, res);
+          }
+        }
       });
       break;
     // [ other ]
     default:
-      util.handlerBadRequest(req, res)
+      util.handleBadRequest(req, res)
       break;
   }
 }
@@ -82,22 +98,32 @@ function handleDelete(req, res) {
         body = Buffer.concat(body).toString();
         const params = new URLSearchParams(body);
         const id = params.get('id');
-        Post.findByPk(id).then((post) => {
-          if (req.user === post.postedBy || req.user === 'admin') {
-            post.destroy().then(() => {
-              handleRedirectPosts(req, res);
+        const requestedOneTimeToken = params.get('oneTimeToken');
+        if (!(id && requestedOneTimeToken)) {
+          util.handleBadRequest(req, res);
+        } else {
+          if (oneTimeTokenMap.get(req.user) === requestedOneTimeToken) {
+            Post.findByPk(id).then((post) => {
+              if (req.user === post.postedBy || req.user === 'admin') {
+                post.destroy().then(() => {
+                  console.info(
+                    `削除されました: user: ${req.user}, ` +
+                    `remoteAddress: ${req.socket.remoteAddress}, ` +
+                    `userAgent: ${req.headers['user-agent']} `
+                  );
+                  oneTimeTokenMap.delete(req.user);
+                  handleRedirectPosts(req, res);
+                });
+              }
             });
+          } else {
+            util.handleBadRequest(req, res);
           }
-        });
+        }
       });
-      console.info(
-        `削除されました: user: ${req.user}, ` +
-        `remoteAddress: ${req.socket.remoteAddress}, ` +
-        `userAgent: ${req.headers['user-agent']} `
-      );
       break;
     default:
-      util.handlerBadRequest(req, res);
+      util.handleBadRequest(req, res);
       break;
   }
 }

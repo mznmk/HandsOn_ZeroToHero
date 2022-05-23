@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>偽物の投稿フォーム</title>
+</head>
+
+<body>
+  <h1>ブラウザの挙動テスト</h1>
+  <form method="post" action="http://localhost:8000/posts">
+    <input type="hidden" name="content" value="まんまと罠にかかりましたね" />
+    <button type="submit">ボタンを押してみてください(投稿)</button>
+  </form>
+  <form method="post" action="http://localhost:8000/posts?delete=1">
+    <input type="hidden" name="id" value="24" />
+    <button type="submit">ボタンを押してみてください(削除)</button>
+  </form>
+</body>
+</html>

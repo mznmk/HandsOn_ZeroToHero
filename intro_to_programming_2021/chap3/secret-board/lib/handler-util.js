@@ -24,11 +24,11 @@ function handleNotFound(req, res) {
   res.end('ページがみつかりません');
 }
 
-function handlerBadRequest(req, res) {
+function handleBadRequest(req, res) {
   res.writeHead(400, {
     'Content-Type': 'text/plain; charset=utf-8'
   });
-  res.end('未対応のメソッドです');
+  res.end('未対応のリクエストです');
 }
 
 function handleFavicon(req, res) {
@@ -42,6 +42,6 @@ function handleFavicon(req, res) {
 module.exports = {
 	handleLogout,
   handleNotFound,
-  handlerBadRequest,
+  handleBadRequest: handleBadRequest,
   handleFavicon
 }
