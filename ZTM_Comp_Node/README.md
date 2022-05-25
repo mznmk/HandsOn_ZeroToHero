@@ -48,3 +48,23 @@ install Node.js ver12〜
 
 ### Section 12: Databases
 
+
+
+
+### Section 20: Extra: Deno vs Node.js
+
+
+### Section 21: Appendix: How JavaScript Works
+
+
+### Section 22: Appendix: Asynchronous JavaScript
+
+
+### Section 23: Appendix: Pong Front End
+
+
+### Section 24: Appendix: TypeScript
+
+
+### Section 25: Appendix: SQL
+
