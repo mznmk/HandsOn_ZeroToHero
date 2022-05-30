@@ -6,27 +6,27 @@ https://www.nnn.ed.nico/courses/999/chapters/13383
 https://github.com/nnn-training  
 
 
-## express-study (4章 1節)
+## express-study (4章 2節)
 
 何もないディレクトリに express-generator でプロジェクトのテンプレを作成し、Express を導入した。  
 
 
-## express-api (4章 2節)
+## express-api (4章 3節)
 
 helmet というモジュールを導入し、 Express の機能を拡張した。  
 
 
-## github-oauth (4章 3節)
+## github-oauth (4章 4節)
 
 GitHub を使った外部認証 によるログインシステムを実装した。  
 
 
-## damage-calc (4章 4節)
+## damage-calc (4章 5節)
 
 テスティングフレームワーク Jest を導入し、テストを機能を実装した。  
 
 
-## damage-calc (4章 5節)
+## damage-calc (4章 6節)
 
 CIツール GitHub Actions を導入し、自動テストを学習した。  
 ※ repositoryにpushするたびにテストが走られると困る（学習用repository）ので、  
@@ -34,27 +34,27 @@ CIツール GitHub Actions を導入し、自動テストを学習した。
    本来はrepositoryのrootに .github/ で配置する。  
 
 
-## webpack-study (4章 6節)
+## webpack-study (4章 7節)
 
 webpack を導入し、モジュールバンドラーを学習した。  
 
 
-## dom-manipulation (4章 7節)
+## dom-manipulation (4章 8節)
 
 jQuery を導入し、DOM 操作のフレームワーク を学習した。  
 
 
-## ajax-study (4章 8節)
+## ajax-study (4章 9節)
 
 AJAX による クライアント=サーバー 間の通信 (プル型通信) を学習した。  
 
 
-## websocket-study (4章 9節)
+## websocket-study (4章 10節)
 
 WebSocket による クライアント=サーバー 間の通信 (プッシュ型通信) を学習した。  
 
 
-## rdb-study (4章 10-14節)
+## rdb-study (4章 11-15節)
 
 PostgreSQL を導入した。  
 データベースの概要を学習した。  
@@ -66,10 +66,60 @@ PostgreSQL を導入した。
 集計関数について学習した。  
 
 
-## schedule-arranger (4章 15-23節)
+## schedule-arranger (4章 16-24節)
 
-Webアプリ「予定調整くん」を作成する。  
+Webアプリ「予定調整くん」を作成した。  
 
+|ファイル                |処理内容                  |
+|:----------------------:|:------------------------:|
+|routes/login.js         |ログイン処理              |
+|routes/logout.js        |ログアウト処理            |
+|routes/schedules.js     |予定に関連する処理        |
+|routes/availabilities.js|出欠の更新に関する処理    |
+|routes/comments.js      |コメントの更新に関する処理|
+|models/user.js          |ユーザーの定義と永続化    |
+|models/schedule.js      |予定の定義と永続化        |
+|models/candidate.js     |候補の定義と永続化        |
+|models/availabilitiy.js |出欠の定義と永続化        |
+|models/comment.js       |コメントの定義と永続化    |
+
+※ rootユーザーで実行しないとうまくいかないので注意！  
+※ `sudo chown -R mika:mika ./schedule-arranger` コマンドで、ローカル側からまとめてUser:Groupを変更して対応している。  
+
+【16節】  
+- プロジェクトの設計(要件定義)  
+- GitHubへアプリケーション登録(GitHub認証用)  
+
+【17節】  
+- プロジェクトの作成  
+- GitHub認証の実装  
+- Routerオブジェクトのテスト(--devでインストール)  
+   - jest
+      テストを実行するモジュール
+   - supertest  
+      Express の Router オブジェクトをテストするモジュール  
+   - pasport-stub  
+      GitHub 認証のログイン・ログアウト処理をテスト内で模倣できるモジュール  
+
+【18節】  
+
+
+【19節】  
+
+
+【20節】  
+
+
+【21節】  
+
+
+【22節】  
+
+
+【23節】  
+
+
+【24節】  
 
 
 
