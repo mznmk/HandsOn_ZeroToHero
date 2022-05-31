@@ -9,6 +9,7 @@ const Schedule = require('../models/schedule');
 const Candidate = require('../models/candidate');
 const User = require('../models/user');
 const Availability = require('../models/availability');
+const Comment = require('../models/comment');
 
 // [ routes: (get) /new ]
 router.get('/new', authenticationEnsurer, (req, res, next) => {
@@ -39,7 +40,6 @@ router.post('/', authenticationEnsurer, (req, res, next) => {
           scheduleId: schedule.scheduleId
         };
       });
-      console.log("aho");
       Candidate.bulkCreate(candidates).then(() => {
         res.redirect('/schedules/' + schedule.scheduleId);
       });
@@ -49,6 +49,8 @@ router.post('/', authenticationEnsurer, (req, res, next) => {
 
 // [ routes: (get) /:scheduleId ]
 router.get('/:scheduleId', authenticationEnsurer, (req, res, next) => {
+  let storedSchedule = null;
+  let storedCandidates = null;
   Schedule.findOne({
     include: [
       {
@@ -60,81 +62,103 @@ router.get('/:scheduleId', authenticationEnsurer, (req, res, next) => {
       scheduleId: req.params.scheduleId
     },
     order: [['updatedAt', 'DESC']]
-  }).then((schedule) => {
+  })
+  .then((schedule) => {
     if (schedule) {
-      Candidate.findAll({
+      storedSchedule = schedule;
+      return Candidate.findAll({
         where: {
           scheduleId: schedule.scheduleId
         },
         order: [['candidateId', 'ASC']]
-      }).then((candidates) => {
-        Availability.findAll({
-          include: [
-            {
-              model: User,
-              attributes: ['userId', 'username']
-            }
-          ],
-          where: { scheduleId: schedule.scheduleId },
-          order: [[User, 'username', 'ASC'], ['candidateId', 'ASC']]
-        }).then((availabilities) => {
-          // 出欠 MapMap(キー:ユーザー ID, 値:出欠Map(キー:候補 ID, 値:出欠)) を作成する
-          // key: userId, value: Map(key: candidateId, value: availability)
-          const availabilityMapMap = new Map();
-          availabilities.forEach((a) => {
-            const map = availabilityMapMap.get(a.user.userId) || new Map();
-            map.set(a.candidateId, a.availability);
-            availabilityMapMap.set(a.user.userId, map);
-          });
-
-          // 閲覧ユーザーと出欠に紐づくユーザーからユーザー Map (キー:ユーザー ID, 値:ユーザー) を作る
-          // key: userId, value: User
-          const userMap = new Map();
-          userMap.set(
-            parseInt(req.user.id),
-            {
-              isSelf: true,
-              userId: parseInt(req.user.id),
-              username: req.user.username
-            }
-          );
-          availabilities.forEach((a) => {
-            userMap.set(
-              a.user.userId,
-              {
-                // 閲覧ユーザー自身であるかを含める
-                isSelf: parseInt(req.user.id) === a.user.userId,
-                userId: a.user.userId,
-                username: a.user.username
-              }
-            );
-          });
-
-          // 全ユーザー、全候補で二重ループしてそれぞれの出欠の値がない場合には、「欠席」を設定する
-          const users = Array.from(userMap).map((keyValue) => keyValue[1]);
-          users.forEach((u) => {
-            candidates.forEach((c) => {
-              const map = availabilityMapMap.get(u.userId) || new Map();
-              const a = map.get(c.candidateId) || 0;
-              map.set(c.candidateId, a);
-              availabilityMapMap.set(u.userId, map);
-            });
-          });
-          
-          res.render('schedule', {
-            user: req.user,
-            schedule: schedule,
-            candidates: candidates,
-            users: users,
-            availabilityMapMap: availabilityMapMap
-          });
-        });
-      });
+      })
     } else {
       const err = new Error('指定されて予定は見つかりません');
       err.status = 404;
       next(err);
     }
+  })
+  .then((candidates) => {
+    storedCandidates = candidates;
+    return Availability.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['userId', 'username']
+        }
+      ],
+      where: {
+        scheduleId: storedSchedule.scheduleId
+      },
+      order: [
+        [User, 'username', 'ASC'],
+        ['candidateId', 'ASC']
+      ]
+    });
+  })
+  .then((availabilities) => {
+    // 出欠 MapMap(キー:ユーザー ID, 値:出欠Map(キー:候補 ID, 値:出欠)) を作成する
+    // key: userId, value: Map(key: candidateId, value: availability)
+    const availabilityMapMap = new Map();
+    availabilities.forEach((a) => {
+      const map = availabilityMapMap.get(a.user.userId) || new Map();
+      map.set(a.candidateId, a.availability);
+      availabilityMapMap.set(a.user.userId, map);
+    });
+
+    // 閲覧ユーザーと出欠に紐づくユーザーからユーザー Map (キー:ユーザー ID, 値:ユーザー) を作る
+    // key: userId, value: User
+    const userMap = new Map();
+    userMap.set(
+      parseInt(req.user.id),
+      {
+        isSelf: true,
+        userId: parseInt(req.user.id),
+        username: req.user.username
+      }
+    );
+    availabilities.forEach((a) => {
+      userMap.set(
+        a.user.userId,
+        {
+          // 閲覧ユーザー自身であるかを含める
+          isSelf: parseInt(req.user.id) === a.user.userId,
+          userId: a.user.userId,
+          username: a.user.username
+        }
+      );
+    });
+
+    // 全ユーザー、全候補で二重ループしてそれぞれの出欠の値がない場合には、「欠席」を設定する
+    const users = Array.from(userMap).map((keyValue) => keyValue[1]);
+    users.forEach((u) => {
+      storedCandidates.forEach((c) => {
+        const map = availabilityMapMap.get(u.userId) || new Map();
+        const a = map.get(c.candidateId) || 0;
+        map.set(c.candidateId, a);
+        availabilityMapMap.set(u.userId, map);
+      });
+    });
+    
+    // コメント取得
+    return Comment.findAll({
+      where: {
+        scheduleId: storedSchedule.scheduleId
+      }
+    }).then((comments) => {
+      const commentMap = new Map(); // key: userId, value: comment
+      comments.forEach((comment) => {
+        commentMap.set(comment.userId, comment.comment);
+      });
+      res.render('schedule', {
+        user: req.user,
+        schedule: storedSchedule,
+        candidates: storedCandidates,
+        users: users,
+        availabilityMapMap: availabilityMapMap,
+        commentMap: commentMap
+      });
+    });
   });
 });
 

@@ -63,6 +63,7 @@ var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
 var schedulesRouter = require('./routes/schedules');
 var availabilitiesRouter = require('./routes/availabilities')
+var commentsRouter = require('./routes/comments');
 
 // [ Express ]
 var app = express();
@@ -78,14 +79,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// routing
-app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/logout', logoutRouter);
-app.use('/schedules', schedulesRouter);
-app.use('/schedules', availabilitiesRouter);
-
-// auth
+// prepare auth (passport)
 app.use(session({
   secret: '52b8d243bf127a3c',
   resave: false,
@@ -94,6 +88,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// routing
+app.use('/', indexRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+app.use('/schedules', schedulesRouter);
+app.use('/schedules', availabilitiesRouter);
+app.use('/schedules', commentsRouter);
+
+// github auth
 app.get('/auth/github',
   passport.authenticate('github', { scope: 'user:email' }),
   function (req, res) {
