@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+  //- scheduleName
+  h4 #{schedule.scheduleName}
+  //- memo
+  p(style="white-space:pre;") #{schedule.memo}
+  //- createdBy
+  p 作成者: #{schedule.user.username}
+  //- candidates
+  h3 出欠表
+  table
+    //- table header 
+    tr 
+      th 予定
+      each user in users 
+        th #{user.username}
+    //- table date
+    each candidate in candidates 
+      tr 
+        th #{candidate.candidateName}
+        each user in users 
+          td 
+            bottom 欠席
