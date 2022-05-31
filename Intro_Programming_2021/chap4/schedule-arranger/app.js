@@ -62,7 +62,9 @@ var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
 var schedulesRouter = require('./routes/schedules');
+var availabilitiesRouter = require('./routes/availabilities')
 
+// [ Express ]
 var app = express();
 app.use(helmet());
 
@@ -76,6 +78,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// routing
+app.use('/', indexRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+app.use('/schedules', schedulesRouter);
+app.use('/schedules', availabilitiesRouter);
+
+// auth
 app.use(session({
   secret: '52b8d243bf127a3c',
   resave: false,
@@ -84,15 +94,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/logout', logoutRouter);
-app.use('/schedules', schedulesRouter);
-
 app.get('/auth/github',
   passport.authenticate('github', { scope: 'user:email' }),
   function (req, res) {
-
 });
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
@@ -116,4 +120,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// [ export module ]
 module.exports = app;
