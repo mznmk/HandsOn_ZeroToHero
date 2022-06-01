@@ -7,6 +7,10 @@ block content
   p(style="white-space:pre;") #{schedule.memo}
   //- createdBy
   p 作成者: #{schedule.user.username}
+  - var isMine = parseInt(user.id) === schedule.user.userId 
+  if isMine 
+    div 
+      a(href=`/schedules/${schedule.scheduleId}/edit`) この予定を編集する
   //- candidates
   h3 出欠表
   table
