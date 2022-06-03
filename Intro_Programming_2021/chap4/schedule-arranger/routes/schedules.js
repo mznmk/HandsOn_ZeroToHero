@@ -10,14 +10,16 @@ const Candidate = require('../models/candidate');
 const User = require('../models/user');
 const Availability = require('../models/availability');
 const Comment = require('../models/comment');
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
 
 // [ routes: (get) /new ]
-router.get('/new', authenticationEnsurer, (req, res, next) => {
-  res.render('new', { user: req.user });
+router.get('/new', authenticationEnsurer, csrfProtection, (req, res, next) => {
+  res.render('new', { user: req.user, csrfToken: req.csrfToken() });
 });
 
 // [ routes: (post) / ]
-router.post('/', authenticationEnsurer, (req, res, next) => {
+router.post('/', authenticationEnsurer, csrfProtection, (req, res, next) => {
   const scheduleId = uuid.v4();
   const updatedAt = new Date();
   Schedule.create(
@@ -150,7 +152,7 @@ router.get('/:scheduleId', authenticationEnsurer, (req, res, next) => {
 
 // [ routes: (get) /:scheduleId/edit ]
 // open edit window
-router.get('/:scheduleId/edit', authenticationEnsurer, (req, res, next) => {
+router.get('/:scheduleId/edit', authenticationEnsurer, csrfProtection, (req, res, next) => {
   Schedule.findOne({
     where: {
       scheduleId: req.params.scheduleId
@@ -170,7 +172,8 @@ router.get('/:scheduleId/edit', authenticationEnsurer, (req, res, next) => {
         res.render('edit', {
             user: req.user,
             schedule: schedule,
-            candidates: candidates
+            candidates: candidates,
+            csrfToken: req.csrfToken()
         });
       })
     } else {
@@ -183,7 +186,7 @@ router.get('/:scheduleId/edit', authenticationEnsurer, (req, res, next) => {
 
 // [ routes: (post) /:scheduleId ]
 // update edited data
-router.post('/:scheduleId', authenticationEnsurer, (req, res, next) => {
+router.post('/:scheduleId', authenticationEnsurer, csrfProtection, (req, res, next) => {
   Schedule.findOne({
     where: {
       scheduleId: req.params.scheduleId

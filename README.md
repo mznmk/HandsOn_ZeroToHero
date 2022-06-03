@@ -19,13 +19,15 @@
 
 Ｎ予備校  
 [【2021年度】プログラミング入門](./Intro_Programming_2021/)  
-✓  
+
+✅ 受講完了: 1回  
 
 
 ## ZTM Complete Node
 
 Udemy  
 [Complete NodeJS Developer in 2022 (GraphQL, MongoDB, + more)](./ZTM_Comp_Node/)  
+
 ✓  
 
 
@@ -33,6 +35,7 @@ Udemy
 
 Udemy  
 [Node.js + Express + MongoDB で作る Webアプリケーション 実践講座](./TGU_WebApp_Node_Mongo/)  
+
 ✓  
 
 
