@@ -23,6 +23,12 @@
 ✅ 受講完了: 1回  
 
 
+## NNN Intro Scala
+
+Ｎ予備校  
+[Scala基礎コース](./NNN_Intro_Scala/)  
+
+
 ## ZTM Complete Node
 
 Udemy  
