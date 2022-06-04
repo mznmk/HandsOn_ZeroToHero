@@ -43,6 +43,12 @@ https://github.com/nnn-training
 
 [実践編](./practice/)  
 
+### NNN Node Portfolio
+
+Ｎ予備校 特別授業  
+就職で有利になるポートフォリオサイトの作り方  
+https://www.nnn.ed.nico/lessons/482529935  
+
 
 ### NNN Node Online Game
 
