@@ -1,4 +1,4 @@
-# Intro To Programming 2021 - 第１章
+# NNN Intro Node 2021 - 第１章
 
 Ｎ予備校のカリキュラム 【2021年度】プログラミング入門 のハンズオン  
 https://www.nnn.ed.nico/my_course?courseId=999  
