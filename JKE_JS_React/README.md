@@ -8,12 +8,11 @@ https://www.udemy.com/course/modern_javascipt_react_beginner/
 ## Environment Setup
 
 
-### Create React Project
-
-```sh
-$ npx create-react-app "project-name"
-$ npm init react-app "project-name"
-```
+- create react project  
+	```sh
+	$ npx create-react-app "project-name"
+	$ npm init react-app "project-name"
+	```
 
 
 ## Course Contents
@@ -43,7 +42,7 @@ $ npm init react-app "project-name"
 
 ✅ 受講完了: 1回  
 
-![](./images/sec05_todo.png)
+![](./images/sec05_js_todo.png)  
 
 
 ### Section 6: Reactの基本を学ぶ
@@ -53,7 +52,9 @@ $ npm init react-app "project-name"
 
 ### Section 7: Reactを使ってTODOアプリを作成してみよう
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+![](./images/sec07_react_todo.png)  
 
 
 ### Section 8: さいごにとこれから

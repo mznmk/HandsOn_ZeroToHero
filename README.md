@@ -68,6 +68,8 @@ Udemy
 Udemy  
 [モダンJavaScriptの基礎から始める挫折しないためのReact入門](./JKE_JS_React/)  
 
+✅ 受講完了: 1回  
+
 
 ## JKE TS React
 
