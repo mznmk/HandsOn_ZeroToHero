@@ -36,17 +36,59 @@ https://www.udemy.com/course/react_stepup/
 
 ### Section 3: 再レンダリングの仕組みを知りレンダリングを最適化する
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### Section 4: 様々なCSSのあてかたに触れる
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
+#### inline style
+
+- 疑似要素使えない  
+
+#### node-sass
+
+- 疑似要素使える  
+- install node-sass ()  
+	```sh
+	$ yarn add node-sass
+	```
+#### styled-jsx
+
+- 疑似要素使えない  
+- install styled-jsx  
+	```sh
+	$ yarn add styled-jsx
+	```
+
+#### styled-components ○
+
+- 疑似要素使える  
+- install styled-components  
+	```sh
+	$ yarn add styled-components
+	```
+
+#### emotion ○
+
+- 疑似要素使える  
+- いろいろな書き方ができる  
+- install emotion  
+	```sh
+	$ yarn add @emotion/styled
+	$ yarn add @emotion/react
+	```
 
 ### Section 5: ルーティングの基礎(ReactRouter)
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+- ReactRouterはVer5を使う  
+- install react-rooter-dom  
+	```sh
+	$ yarn add react-router-dom@5.3.0
+	```
 
 
 ### Section 6: コンポーネントの分割方法(AtomicDesign)
