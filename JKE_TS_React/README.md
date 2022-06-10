@@ -117,7 +117,13 @@ https://www.udemy.com/course/react_stepup/
 
 ### Section 8: JSONPlaceholderでのデータ取得解説
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+- https://jsonplaceholder.typicode.com/  
+- install axios  
+	```sh
+	$ yarn add axios
+	```
 
 
 ### Section 9: React×TypeScript(基礎編)
