@@ -93,7 +93,16 @@ https://www.udemy.com/course/react_stepup/
 
 ### Section 6: コンポーネントの分割方法(AtomicDesign)
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+- install react-rooter-dom  
+	```sh
+	$ yarn add react-router-dom@5.3.0
+	```
+- install styled-components  
+	```sh
+	$ yarn add styled-components
+	```
 
 
 ### Section 7: グローバルなstate管理を知る
@@ -122,6 +131,8 @@ https://www.udemy.com/course/react_stepup/
 
 
 ### Section 12: 実践アプリ作成(ChakraUI)
+
+https://github.com/reachscript-jak/react-intermediate-practice-app  
 
 ✓ 受講途中:  
 
