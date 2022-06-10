@@ -107,7 +107,12 @@ https://www.udemy.com/course/react_stepup/
 
 ### Section 7: グローバルなstate管理を知る
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+- install recoil  
+	```sh
+	$ yarn add recoil
+	```
 
 
 ### Section 8: JSONPlaceholderでのデータ取得解説
