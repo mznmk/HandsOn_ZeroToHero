@@ -14,10 +14,15 @@ https://www.udemy.com/course/react_stepup/
 ## Environment Setup
 
 
-- create react project  
+- create react project (JavaScript)  
 	```sh
 	$ npx create-react-app "project-name"
 	$ npm init react-app "project-name"
+	```
+- create react project (TypeScript)  
+	```sh
+	$ npx create-react-app "project-name" --template typescript
+	$ npm init react-app "project-name"  --template typescript
 	```
 
 
@@ -128,17 +133,28 @@ https://www.udemy.com/course/react_stepup/
 
 ### Section 9: React×TypeScript(基礎編)
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### Section 10: React×TypeScript(実践編)
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+- create react project (TypeScript)  
+	```sh
+	$ npx create-react-app "project-name" --template typescript
+	$ npm init react-app "project-name"  --template typescript
+	```
+- ライブラリの型定義
+	- ライブラリ自体に型定義が含まれているものと含まれていないものがある  
+	- repositryのrootにindex.d.jsがあるかどうかで判断できる  
+	- 含まれていなければ別途 `npm/yarn add @types/library-name` でインストールできる
+	  
 
 
 ### Section 11: カスタムフック
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### Section 12: 実践アプリ作成(ChakraUI)
