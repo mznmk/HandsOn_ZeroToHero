@@ -18,11 +18,13 @@ https://www.udemy.com/course/react_stepup/
 	```sh
 	$ npx create-react-app "project-name"
 	$ npm init react-app "project-name"
+	$ yarn create react-app "project-name"
 	```
 - create react project (TypeScript)  
 	```sh
 	$ npx create-react-app "project-name" --template typescript
 	$ npm init react-app "project-name"  --template typescript
+	$ yarn create react-app "project-name" --template typescript
 	```
 
 
@@ -90,7 +92,7 @@ https://www.udemy.com/course/react_stepup/
 ✅ 受講完了: 1回  
 
 - ReactRouterはVer5を使う  
-- install react-rooter-dom  
+- install react-router-dom  
 	```sh
 	$ yarn add react-router-dom@5.3.0
 	```
@@ -161,7 +163,42 @@ https://www.udemy.com/course/react_stepup/
 
 https://github.com/reachscript-jak/react-intermediate-practice-app  
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+![](./images/sec12_1.png)  
+
+![](./images/sec12_2.png)  
+
+![](./images/sec12_3.png)  
+
+- CSSの有名なライブラリー  
+	- MATERIAL-UI  
+	- Tailwind CSS  
+	- Semantic UI React  
+	- Chakra UI  
+- install chakra-ui (manual installation)  
+	```sh
+	$ npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6
+	$ yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6
+	```
+- install chakra-ui (autimatic installation)  
+	```sh
+	$ npx create-react-app my-app --template @chakra-ui/typescript
+	$ yarn create react-app my-app --template @chakra-ui/typescript
+	```
+- install react-router-dom @types/react-router-dom 
+	```sh
+	$ yarn add react-router-dom@5.3.0
+	$ yarn add @types/react-router-dom
+	```
+- install @chakra-ui/icons
+	```sh
+	$ yarn add @chakra-ui/icons
+	```
+- install axios  
+	```sh
+	$ yarn add axios
+	```
 
 
 ### Section 13: さいごにとこれから
