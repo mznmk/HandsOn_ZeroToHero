@@ -14,6 +14,14 @@
 ✅ 受講完了: 1回 (入門)  
 
 
+### SC Node Todo
+
+Udemy  
+[【Node.js入門】Node.jsとMongoDBを連携してTodoアプリを１から構築してみよう](./SC_Node_Todo/)  
+
+✓  
+
+
 ### TGU WebApp Node Mongo
 
 Udemy  
@@ -146,12 +154,6 @@ Udemy
 
 Udemy  
 [Node.js + Express + MySQL で作る 安全な Webアプリケーション 実践講座](./TGU_WebApp_Node_MySQL/)  
-
-
-### SC Node Todo
-
-Udemy  
-[【Node.js入門】Node.jsとMongoDBを連携してTodoアプリを１から構築してみよう](./SC_Node_Todo/)  
 
 
 ### SC Node FullStack
