@@ -15,16 +15,22 @@ function createWebSocketServer(io, game) {
       game.updatePlayerDirection(socket.id, direction);
     });
 
+    socket.on('missile emit', (direction) => {
+      game.missileEmit(socket.id, direction);
+    });
+    
     socket.on("disconnect", () => {
       game.disconnect(socket.id);
     });
   });
 
   // < event: send data >
-  const socketTicker = setInterval(() => {
-    rootIo.volatile.emit("map data", game.getMapData());    // send to everyone
-  },
-  66);
+  const socketTicker = setInterval(
+    () => {
+      rootIo.volatile.emit("map data", game.getMapData());    // send to everyone
+    },
+    66
+  );
 };
 
 // [ export ]

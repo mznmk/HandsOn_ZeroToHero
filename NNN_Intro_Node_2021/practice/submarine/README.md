@@ -9,6 +9,13 @@ https://www.nnn.ed.nico/lessons/482529311
 https://github.com/progedu/submarine-online  
 
 
+## Caution
+
+JavaScriptなので、タイポでバグるケースが多い(○radar ×radar のようなタイポ)ので注意すること。テキストのタイポも多いので、慎重にやること。  
+
+初心者向けにするのに？ 関数に括りだせばまとめれるものも、まとめてなかったりするので、テキストのコードの記述量はとても多くなっている。内容をちゃんと理解した上で、コピペで進めていくのがよい。  
+
+
 ## Environment Setup
 
 
@@ -138,7 +145,7 @@ Twitter API v2 には３つのAccessLevelがあり、Twitter認証にはElevated
 Essential(v2で追加された)ではできない。エラーメッセージはそういう意味だった。  
 ~~仕様が変わったのか、エラーが出てTwitterログインできなかった。~~  
 ~~調べてもわからないので、未来の自分に託すことにした。~~  
-![](./images/submarine_err01.png)  
+![](../images/submarine_err01.png)  
 
 
 ### part 5: game ページの作成
@@ -203,7 +210,7 @@ yarn add socket.io@2.2.0 socket.io-client@2.2.0
 
 ### part 13: 他のプレイヤーの表示
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### part 14: GameOver 時の実装
