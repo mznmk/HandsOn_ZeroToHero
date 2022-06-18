@@ -1,5 +1,8 @@
 # NNN Node Online Game
 
+![](../images/submarine_01.png)  
+![](../images/submarine_02.png)  
+
 Ｎ予備校 特別授業  
 折原先生の 1日で作れる！ 〜Node.jsでオンラインゲーム〜  
 https://www.nnn.ed.nico/contents/guides/2977/content  
@@ -11,9 +14,11 @@ https://github.com/progedu/submarine-online
 
 ## Caution
 
-JavaScriptなので、タイポでバグるケースが多い(○radar ×radar のようなタイポ)ので注意すること。テキストのタイポも多いので、慎重にやること。  
+- JavaScriptなので、タイポでバグるケースが多い(○radar ×rader のようなタイポ)ので注意すること。テキストのタイポも多いので、慎重にやること。  
 
-初心者向けにするのに？ 関数に括りだせばまとめれるものも、まとめてなかったりするので、テキストのコードの記述量はとても多くなっている。内容をちゃんと理解した上で、コピペで進めていくのがよい。  
+- 初心者向けにするのに？ 関数に括りだせばまとめれるものも、まとめてなかったりするので、テキストのコードの記述量はとても多くなっている。内容をちゃんと理解した上で、コピペで進めていくのがよい。  
+
+- Twitter認証用のキー(consumerKey, consumerSecret)を書いてあるファイル `config.js` をGitHubにPushすると危険なので、その変わりに伏せ字に置き換えた `config_templete.js` をPushしている。  
 
 
 ## Environment Setup
@@ -215,20 +220,20 @@ yarn add socket.io@2.2.0 socket.io-client@2.2.0
 
 ### part 14: GameOver 時の実装
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### part 15: ミサイルを打てるようにしよう
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### part 16: NPC を実装しよう
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### part 17: スコアランキングの表示
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
