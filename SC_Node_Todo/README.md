@@ -12,6 +12,7 @@ https://www.udemy.com/course/nodejs-mongodb-todoapp/
 
 ## Environment Setup
 
+
 ### install Express
 
 BackEndのフレームワーク Express をインストールする  
@@ -41,6 +42,17 @@ WebAPI開発用ツール Postman をローカルにインストールする
 $ sudo snap install postman
 ```
 
+### install mongoose
+
+```sh
+npm install mongoose
+```
+
+### execute nodemon
+
+```sh
+npm run dev
+```
 
 ## Course Contents
 
@@ -59,32 +71,33 @@ $ sudo snap install postman
 
 ✅ 受講完了: 1回  
 
-- install Express  
-- install nodemon  
-- install Postman
+- `Express` `nodemon` をインストールする  
+- `Postman` をインストールする  
 
 
 ### Section 4: MongoDBの基礎を理解しよう
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
 
 
 ### Section 5: 【実践編】Todoアプリ(バックエンド編)
 
 ✓ 受講途中:  
 
+mongoコンテナとの接続がうまく行かないのでいったん諦める  
+未来の自分の託す！  
+
+- `Express` `nodemon` をインストールする  
+- `Postman` をインストールする  
+- `mongoose` をインストールする  
+- `dotenv` をインストールする  
+
 
 ### Section 6: 【実践編】Todoアプリ(フロントエンド編)
-
-✓ 受講途中:  
 
 
 ### Section 7: 【実践編】Todoアプリ(タスク編集編)
 
-✓ 受講途中:  
-
 
 ### Section 8: 【実践編】Todoアプリ(デプロイ編)
-
-✓ 受講途中:  
 
