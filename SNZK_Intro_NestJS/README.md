@@ -14,6 +14,9 @@ Node.js上で動作するバックエンドフレームワークであるNestJS�
 Dockerを利用してNestJS＋TypeORM+MySQLの環境構築する  
 https://zenn.dev/senri/articles/331162304a78e0  
 
+Typeorm でマイグレーションをしよう  
+https://qiita.com/qualitia_cdev/items/eb8f2c614c0435b9a120  
+
 ## Environment Setup
 
 ### Node.js
@@ -99,10 +102,37 @@ node:16.13.1-alpine コンテナを利用した
 
 ### Section 4: データベース
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+pgadminにアクセスできないので使わないことにした  
+
+- TypeORMとPostgreSQLドライバーをインストールする  
+    (このバージョンに固定しないと動作しない可能性がある)  
+    ```sh
+    docker-compose exec nest npm install --save typeorm@0.2.45 @nestjs/typeorm@8.0.2 pg
+    ```
+- TypeORMの雛形を作成する(この講義ではこれを使わず手動で行った)  
+    ```sh
+    docker-compose exec npx typeorm init
+    ```
+- migrationファイルを作成する  
+    ```sh
+    docker-compose exec nest npx typeorm migration:generate -n CreateItem
+    ```
+    次のエラーが出た場合はschemaをdropしてからやり直す  
+    No changes in database schema were found - cannot generate a migration. To create a new empty migration use "typeorm migration:create" command  
+    ```sh
+    docker-compose exec nest npx typeorm schema:drop
+    ```
+- migrationを実行する(npm run start:dev でコンパイルする必要がある)  
+    ```sh
+    docker-compose exec nest npx typeorm migration:run
+    ```
 
 
 ### Section 5: セキュリティ
+
+✓ 受講途中:  
 
 
 ### Section 6: テスト

@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+  nest:
+    container_name: nest
+    build: .
+    tty: true
+    hostname: nest
+    ports:
+      - "3000:3000"
+    volumes:
+      - type: bind
+        source: .
+        target: /nest
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:14.2-alpine
+    hostname: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/postgres/init.d:/docker-entrypoint-initdb.d
+      - ./docker/postgres/pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+      POSTGRES_DB: postgres
+    restart: always
+    user: root
+
+  # pgadmin:
+  #   container_name: pgadmin
+  #   image: dpage/pgadmin4
+  #   hostname: pgadmin
+  #   ports:
+  #     - 8000:80
+  #   volumes:
+  #     - ./docker/pgadmin:/var/lib/pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: nestjs@example.com
+  #     PGADMIN_DEFAULT_PASSWORD: password
+  #   restart: always
+  #   depends_on:
+  #     - postgres
