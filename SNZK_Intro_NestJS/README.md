@@ -67,12 +67,12 @@ node:16.13.1-alpine コンテナを利用した
     docker-compose exec api nest generate module items
     ```
 - 新規コントローラーの雛形を作成する  
-    (`--no-spec`: テストファイルを作成しないオプション)
+    (`--no-spec`: テストファイルを作成しないオプション)  
     ```sh
     docker-compose exec api nest generate controller items --no-spec
     ```
 - 新規サービスの雛形を作成する  
-    (`--no-spec`: テストファイルを作成しないオプション)
+    (`--no-spec`: テストファイルを作成しないオプション)  
     ```sh
     docker-compose exec api nest generate service items --no-spec
     ```
@@ -85,10 +85,21 @@ node:16.13.1-alpine コンテナを利用した
 
 ### Section 3: バリデーションと例外処理
 
-✓ 受講途中:  
+✅ 受講完了: 1回  
+
+- UUID作成ライブラリーをインストールする  
+    ```sh
+    docker-compose exec api npm install --save uuid
+    ```
+- Validationに必要なライブラリーをインストールする  
+    ```sh
+    docker-compose exec api npm install --save class-validator class-transformer
+    ```
 
 
 ### Section 4: データベース
+
+✓ 受講途中:  
 
 
 ### Section 5: セキュリティ
