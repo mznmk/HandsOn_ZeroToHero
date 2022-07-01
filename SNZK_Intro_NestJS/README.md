@@ -134,6 +134,17 @@ pgadminにアクセスできないので使わないことにした
 
 ✓ 受講途中:  
 
+migrationがうまくいかないのでいったん諦める  
+未来の自分の託す！  
+
+- authモジュール/コントローラー/サービスの雛形を作成する  
+    ```sh
+    docker-compose exec nest nest g module auth
+    docker-compose exec nest nest g controller auth --no-spec
+    docker-compose exec nest nest g service auth --no-spec
+    ```
+- migrationファイルを作成し実行する  
+
 
 ### Section 6: テスト
 

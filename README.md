@@ -64,6 +64,8 @@ Udemy
 Udemy  
 [NestJS入門 TypeScriptではじめるサーバーサイド開発](./SNZK_Intro_to_NestJS/)  
 
+✓  
+
 
 ## Beginner
 
